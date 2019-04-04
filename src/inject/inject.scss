@@ -1,0 +1,136 @@
+$border: 1px solid rgba(0, 0, 0, 0.6);
+$backgroundColor: #fbfbfb;
+$borderRadius: 3px;
+$controlPadding: 5px 10px;
+
+#__qunit-boosted-root {
+  #__qunit-boosted__wrapper-toggler {
+    padding: 5px 10px;
+    border: $border;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  #__qunit-boosted {
+    display: none;
+  }
+
+  #__qunit-boosted__wrapper-checker:checked {
+    + #__qunit-boosted__wrapper-toggler {
+      font-weight: bold;
+    }
+    ~ #__qunit-boosted {
+      display: flex;
+    }
+  }
+
+  label:before, label:after {
+    display: none;
+  }
+}
+
+#__qunit-boosted {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  overflow: auto;
+  resize: both;
+
+  padding: 10px;
+  max-width: 90vw;
+  min-width: 600px;
+  min-height: 400px;
+  margin: auto;
+  position: absolute;
+  left: 30px;
+  z-index: 100;
+  background-color: $backgroundColor;
+
+  border: $border;
+  border-radius: $borderRadius;
+  box-shadow: 1px 1px rgba(0, 0, 0, .3);
+
+  select {
+    padding: $controlPadding;
+    background: transparent;
+
+  }
+
+  //   controls
+  &__control {
+    width: 20%;
+    margin-bottom: 5px;
+    text-align: right;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      display: inline-block;
+      padding: 5px 15px;
+      border: 2px solid rgba(0, 0, 0, .5);
+      border-radius: 10px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, .5);
+        color: white;
+      }
+    }
+  }
+
+  //   options
+  &__options {
+    width: 80%;
+    margin-bottom: 10px;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    > span {
+      font-weight: bold;
+    }
+
+    label {
+      border: $border;
+      padding: 2px 7px;
+      border-radius: $borderRadius;
+    }
+
+    label:hover, input:checked + label {
+      background-color: rgba(0, 0, 0, .9);
+      color: #fff;
+    }
+  }
+
+  //   search
+  &__search-wrapper {
+    width: 50%;
+  }
+
+  &__search-field {
+    font-size: 12px;
+    width: 100%;
+    padding: $controlPadding;
+    box-sizing: border-box;
+    border-radius: $borderRadius $borderRadius 0 0;
+    border: $border;
+  }
+
+  &__search-results {
+    padding: $controlPadding;
+    min-height: 300px;
+    height: calc(100% - 27px);
+
+    option.selected {
+      font-weight: bold;
+    }
+  }
+
+//   selected results
+  &__selected-results {
+    width: 50%;
+    min-height: 327px;
+    height: calc(100% - 70px);
+  }
+}
